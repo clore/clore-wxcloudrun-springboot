@@ -38,6 +38,7 @@ public class CounterController {
     String openid = headers.get("X-WX-OPENID");
     logger.info("/api/count get request, openid: {}", openid);
 
+    logger.info("headers：{} openid: {}", headers.size(), openid);
     headers.forEach((key, value) -> {
       logger.info(String.format("Header '%s' = %s", key, value));
     });
@@ -62,6 +63,11 @@ public class CounterController {
       @RequestHeader Map<String, String> headers, @RequestBody CounterRequest request) {
     String openid = headers.get("X-WX-OPENID");
     logger.info("/api/count post request, openid: {}, action: {}", openid, request.getAction());
+
+    logger.info("headers：{} openid: {}", headers.size(), openid);
+    headers.forEach((key, value) -> {
+      logger.info(String.format("Header '%s' = %s", key, value));
+    });
 
     Optional<Counter> curCounter = counterService.getCounter(openid);
     if (request.getAction().equals("inc")) {
