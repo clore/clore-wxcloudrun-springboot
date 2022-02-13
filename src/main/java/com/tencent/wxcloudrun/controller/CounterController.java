@@ -36,7 +36,7 @@ public class CounterController {
    */
   @GetMapping(value = "/api/count")
   ApiResponse get(@RequestHeader Map<String, String> headers) {
-    String openid = headers.get("X-WX-OPENID");
+    String openid = headers.get("x-wx-openid");
     logger.info("/api/count get request, openid: {}", openid);
 
     logger.info("headers：{} openid: {}", headers.size(), openid);
@@ -63,7 +63,7 @@ public class CounterController {
   @PostMapping(value = "/api/count")
   ApiResponse create(
       @RequestHeader Map<String, String> headers, @RequestBody CounterRequest request) {
-    String openid = headers.get("X-WX-OPENID");
+    String openid = headers.get("x-wx-openid");
     logger.info("/api/count post request, openid: {}, action: {}", openid, request.getAction());
 
     logger.info("headers：{} openid: {}", headers.size(), openid);
