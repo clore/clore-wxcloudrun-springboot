@@ -10,6 +10,8 @@ public class Counter implements Serializable {
 
   private Integer id;
 
+  private String openid;
+
   private Integer count;
 
   private LocalDateTime createdAt;
