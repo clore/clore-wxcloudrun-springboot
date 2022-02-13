@@ -4,6 +4,7 @@ import com.tencent.wxcloudrun.config.ApiResponse;
 import com.tencent.wxcloudrun.dto.CounterRequest;
 import com.tencent.wxcloudrun.model.Counter;
 import com.tencent.wxcloudrun.service.CounterService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,7 @@ public class CounterController {
       logger.info(String.format("Header '%s' = %s", key, value));
     });
 
+    openid = StringUtils.defaultIfBlank(openid, "_");
     Optional<Counter> counter = counterService.getCounter(openid);
     Integer count = 0;
     if (counter.isPresent()) {
@@ -69,6 +71,7 @@ public class CounterController {
       logger.info(String.format("Header '%s' = %s", key, value));
     });
 
+    openid = StringUtils.defaultIfBlank(openid, "_");
     Optional<Counter> curCounter = counterService.getCounter(openid);
     if (request.getAction().equals("inc")) {
       Integer count = 1;
