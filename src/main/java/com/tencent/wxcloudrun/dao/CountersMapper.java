@@ -8,9 +8,9 @@ import java.util.List;
 @Mapper
 public interface CountersMapper {
 
-  Counter getCounter(@Param("id") Integer id);
+  Counter getCounter(@Param("openid") String openid);
 
   void upsertCount(Counter counter);
 
-  void clearCount(@Param("id") Integer id);
+  void clearCount(@Param("openid") String openid);
 }

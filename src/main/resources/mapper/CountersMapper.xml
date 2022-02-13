@@ -3,28 +3,28 @@
 <mapper namespace="com.tencent.wxcloudrun.dao.CountersMapper">
 
     <resultMap id="countersMapper" type="com.tencent.wxcloudrun.model.Counter">
-        <id property="id" column="id"/>
+        <id property="openid" column="openid"/>
         <result property="count" column="count"/>
         <result property="createdAt" column="createdAt" javaType="java.time.LocalDateTime" />
         <result property="updatedAt" column="updatedAt" javaType="java.time.LocalDateTime"  />
     </resultMap>
 
     <select id="getCounter" resultMap="countersMapper" parameterType="java.lang.Integer">
-        SELECT `id`, `count`, `createdAt`, `updatedAt`
+        SELECT `openid`, `count`, `createdAt`, `updatedAt`
         FROM Counters
-        WHERE id = #{id}
+        WHERE openid = #{openid}
     </select>
 
     <delete id="clearCount" parameterType="java.lang.Integer">
         DELETE
         FROM Counters
-        where id = #{id}
+        where openid = #{openid}
         limit 1
     </delete>
 
     <update id="upsertCount" parameterType="com.tencent.wxcloudrun.model.Counter">
-        INSERT INTO `Counters`(`id`, `count`)
-        VALUE(#{id}, #{count}) 
+        INSERT INTO `Counters`(`openid`, `count`)
+        VALUE(#{openid}, #{count})
         ON DUPLICATE KEY UPDATE count=#{count}
     </update>
 
