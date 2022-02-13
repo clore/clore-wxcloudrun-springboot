@@ -37,6 +37,11 @@ public class CounterController {
   ApiResponse get(@RequestHeader Map<String, String> headers) {
     String openid = headers.get("X-WX-OPENID");
     logger.info("/api/count get request, openid: {}", openid);
+
+    headers.forEach((key, value) -> {
+      logger.info(String.format("Header '%s' = %s", key, value));
+    });
+
     Optional<Counter> counter = counterService.getCounter(openid);
     Integer count = 0;
     if (counter.isPresent()) {
