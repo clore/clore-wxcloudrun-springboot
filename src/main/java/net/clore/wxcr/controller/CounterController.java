@@ -1,9 +1,9 @@
-package com.tencent.wxcloudrun.controller;
+package net.clore.wxcr.controller;
 
-import com.tencent.wxcloudrun.config.ApiResponse;
-import com.tencent.wxcloudrun.dto.CounterRequest;
-import com.tencent.wxcloudrun.model.Counter;
-import com.tencent.wxcloudrun.service.CounterService;
+import net.clore.wxcr.config.ApiResponse;
+import net.clore.wxcr.dto.CounterRequest;
+import net.clore.wxcr.model.Counter;
+import net.clore.wxcr.service.CounterService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
